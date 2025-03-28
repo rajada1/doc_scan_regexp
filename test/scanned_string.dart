@@ -29,8 +29,6 @@ class ScannedString {
     iphoneVisionText28,
     iphoneVisionText29,
     iphoneVisionText30,
-    iphoneVisionText31,
-    iphoneVisionText32,
   ];
 
   static const iphoneVisionText1 = '''COOP
@@ -726,7 +724,8 @@ OPR:500445098 Roze1f
 21/03/2025 12:32:45
 flor''';
 
-  static const iphoneVisionText13 = r'''CNPJ: 09.597.126/0007-55 GRUPO BAZAR RODRIGUES LTDA
+  static const iphoneVisionText13 =
+      r'''CNPJ: 09.597.126/0007-55 GRUPO BAZAR RODRIGUES LTDA
 Avenida Guilherme Schell, 7500 Mathias Velho Canoas-RS
 92340-042
 Fone: (51)3587-3565 I.E.:024/0550862
@@ -1175,7 +1174,7 @@ SAT N° 000544570-17
 
       SiTef froo Fiseru
 ''';
-static const iphoneVisionText22 = r'''DOIPA COMERCIO DE RESIDUOS TENTEIS LTDA
+  static const iphoneVisionText22 = r'''DOIPA COMERCIO DE RESIDUOS TENTEIS LTDA
 RUA ENORE PERINI 489 Nao informado VILA CENTRAL ASS S-5P
 19806-270
 CNPJ:58 324.062/0001-89 E: 189040851113
@@ -1202,7 +1201,8 @@ SAT No. 001.493.215
 3525 0358 3240 6200 0133 5900 1493 2150 0220 9974 1571
 ConsilMe o Da Code pelo aplicativo De olho na nota*
 ''';
-static const iphoneVisionText23 = r'''RIO PRETO REDENTORS PIZZARIA E RESTACRONTE LTDA
+  static const iphoneVisionText23 =
+      r'''RIO PRETO REDENTORS PIZZARIA E RESTACRONTE LTDA
 RUA DOUTOR BROL SILVE, SUR NEO Informado VILA REDENTORA SAD JOSE
 DO RID PRETO-SP 15015-020
 DNPJ:09 062, 488/0001-20 TE:647562515113
@@ -1234,7 +1234,7 @@ SAT No. 000.958.401
 13/03/2025 - 17:32:56
 $525 0809 0624 6900 0120 5900 0958 4010 1623 0383 4099
 ''';
-static const iphoneVisionText24 = r'''pdf
+  static const iphoneVisionText24 = r'''pdf
 - + Zoom automático
 6,76
 Gre.
@@ -1264,7 +1264,7 @@ AGRADECEMOS A PREFERENCIAIVOLTE SEMPRE Trib aprox R$: 57.15 Fed, 0.00 Est, 0.00
 Mun FONTE: IBPT|PDV: 10 OPR: 039 FERNANDA
 Secretaria de Estado da Fazenda do Paraná - Data/Hora da Consulta: 26/03/2025 08:08:16
 ''';
-static const iphoneVisionText25 = r'''NF.pdf
+  static const iphoneVisionText25 = r'''NF.pdf
 - + 90%
 TOKYO MARINGA CENTRO
 CNPJ: 78.577.822/0001-27 SATO RESTAURANTE E LANCHONETE LTDA
@@ -1312,7 +1312,8 @@ Fonte: IBPT/empresometro.com.br D1107F
 ID da NFC-e: 000056563
 Tributos Totais Incidentes(Lei Federal 12.741/12): R$ 20,22
 www.dsat.com.br''';
-static const iphoneVisionText26 = r'''Recebemos de Springer Carrier Ltda os produtos e ou serviços
+  static const iphoneVisionText26 =
+      r'''Recebemos de Springer Carrier Ltda os produtos e ou serviços
 constantes na Nota Piscal Eletrónica indicada abaixo. Emissão: 31/01/2025 Valor
 Total R$ 8.259.58 Destinatario: INSTITUICAO AD NORD BR ED ASS SOC
 DATA DE RECEBIMENTO
@@ -1461,7 +1462,8 @@ da Transparencia do
 Demais itens omitidos...
 RESERVADO AO FISCO
 ''';
-static const iphoneVisionText27 = r'''Recebemos de Leroy Merlin Cia Brasileira de Bricolagem os produtos e/ou serviços constantes na Nota Fiscal Eletrônica indicada abaixo. Emissac 5/03/2025 Valor Lotal: R$ 1.838,04 Destinatario: CONFEDERACAO DAS UNIOES BRASILEIRAS DA IGREJA ADVENTISTA D
+  static const iphoneVisionText27 =
+      r'''Recebemos de Leroy Merlin Cia Brasileira de Bricolagem os produtos e/ou serviços constantes na Nota Fiscal Eletrônica indicada abaixo. Emissac 5/03/2025 Valor Lotal: R$ 1.838,04 Destinatario: CONFEDERACAO DAS UNIOES BRASILEIRAS DA IGREJA ADVENTISTA D
 DATA DE RECEBIMENTO
 IDENTIFICAÇÃO E ASSINATURA DO RECEBEDOR
 NF-e
@@ -1598,7 +1600,7 @@ IPL
 人
 X
 ''';
-static const iphoneVisionText28 = r'''4
+  static const iphoneVisionText28 = r'''4
 NGSN1 6
 CNPJ: 44.236.185/0001-99 INSC. ESTADUAL: 187490812
 MLS CHURRASCARIA E CONVENIENCIA LTDA
@@ -1644,7 +1646,7 @@ NFC-e n*: 000.163.480 Série: 0
 Via do Consumidor
 Respo
 ''';
-static const iphoneVisionText29 = r'''64407939133680,jpg
+  static const iphoneVisionText29 = r'''64407939133680,jpg
 CODIGO
 DESCRIÇAO
 
@@ -1686,7 +1688,7 @@ Serie 002
 Via Estabelecimento
 Compilart Menu Versão: 5.7.33
 ''';
-static const iphoneVisionText30 = r'''01jpg
+  static const iphoneVisionText30 = r'''01jpg
 CENTAURO
 CE-0300
 R BRIGADEIRO FRANCO. 2300 CURITIBA - PR
@@ -1720,58 +1722,75 @@ PDU: 131 NSU 48 OPER 105518
 CRISTHIELLEN AUT 105518
 STOREX 1.1.0/15.49.00 LOJR: 0300
 ''';
-static const iphoneVisionText31 = r'''PagBank
-VIA ESTABELECIMENTO
-AU10:209266
-27/gEV/2025 09:05
-***7215
-R$16,00
-VENDA CREULIO MASIERCARD
-MARIA SALETE LUIZ 24587010944
-CNPJ: 46.408.575/0001-49
-CY: JUMPGESTOR LABEL: MASTERCARU
-ALO:A0000000041010
-NESTE COM
-NSU: 022738832405
-SNPUS:
-AROC: 0F6204F9F0379DFÉ
-EXUAODCC
-Nando Estacionamento
-Rua Almirante Dor val Melchlades de Souza, 693 - Centro
-Florianópolls
-Copi: 46.408.575/0001-49
-Telefone: 48991023164
-Email: andersonlulz23@gmail.co
-Seg à Sexta = 07his as 19hrs Sábado 08hrs à 13his
-DOCUMENTO SSO
-★★*★**REIMPRESSAO★メナストカメ★★＊
-COMPROVANT
-HLY4154
-Código da OS: 139917605
-Entrada: 27/02/2025 às 07:39:04
-Saída: 27/02/2025 às 09:05:26
-Permanência: 01:26:22
-Tabela: CARRO
-Pagamento: Crédito
-Valor: R$ 16,00
-Total
-R$ 16,00
-Ed โกษาแนนสัย แล้ง 61repanabELidate do PodSnee
-''';
-static const iphoneVisionText32 = r'''image_cropper_43326CE381204674A4BD43D4F601312B7133000004B12E4FF8B2jpg
-GVC ESTACIONAMENTO
-CNPJ 09.586.514/0002-26
-HORÁR 1O DAS 8 AS 19 SEG/SEX
-Recibo
-Ticket: 997071044
-Placa: HLY4154
-Operador: Gvc
-Entrada: 27/02/2025 13:50:21
-Pagamento: 27/02/2025 16:33:09
-Permanência: 02:42:47
-Valor pago: R$ 30,00
-Padrão: R$ 30,00 por 02:43
-TOP CloudPark
-cloudpark.com.br
-''';
+
+  static const androidML1 = r'''Linx
+      (NP 47216.47/1 4 IE 687278702113
+      Eytrato 174201
+      CAPN FISCAL İkONICO - SAT
+      7CP! do Consum1ar 4?5.335.578-51
+      CODDESC QT|UNIVI
+      TEM R$
+      2570, b5 informata,
+      001 C58 B04-ETANOL HICEATA0 COM8.
+      31,210 L X 3,670 (22,22)
+      TOTAL R*
+      Cartão de Débito
+      Troco R$
+      1
+      Comete crime qUen Soega
+      OBSERVAçõES DO CONTRIBUINIE
+2
+      114,54
+      Trib aprox R$: 8,48 Federal, 13,74 Estadua
+      SAT No. 001199524
+      26/01/2025 - 12:01:27
+      114,54
+      0,00
+      AZA758
+      Fonte: IBPT/emprescmetro
+      FUNĆ: WESLLEY ABNER SIM TN:1 POV:1 ATEND :7
+      3525 0147 2164 7300 0194 5900
+      1199 5241 7420 1032 7622
+      Consulte o OR Code pelo aplicativo
+      De0lhoNạNota disponível na AppStore
+      (Apple) e PlayStore (Android)
+      #Valor aproximado dos tributos do it em
+      Documento emiticko por linx Pasto Fácil
+      www.hnxcom.bulpasta-fad''';
+
+  static const androidML2 = r'''RUA ONZE DE : AGOSTO, 2570, Nao Informado,
+      AUTO POSTO DE PAŬLA TATUI LTDA
+      BAIRRO VALINHOŚ, , TATÚI, 18277-000
+      CNPJ 47.216,473/0001- -94 IE 687278702113
+      GD
+      Extrato 194728
+      CUPOM FISCAL ELFTRÖNICO - SAI
+      CPF/CNPJ do Consumidor: 435.935.578-51
+      CUD|DESC|QTIUNI VL UN R$| (VL TR R$)*|VL I
+      TEM R$
+      001 C58 BO4-ETANOL HIDRATADO COMB.
+      12,595 L X 3,970 (9,70)
+      TOTAL R$
+      Cartão de Débito
+      Troco R$
+      Comete crime quem sonega
+      OBSERVAÇÕES DO CONTRIBUINTE
+      50,00
+      SAT No. 001199524
+      24/03/2025 - 10:40:38
+2
+      50,00
+      0,00
+      Trib aprox R$: 3,70 Federal, 6,00 Estadual
+      Fonte: IBPT/empresometr0
+      FUNC: LARISSA CRISTINÁ TN:1 PDV:1 ATEND :14
+      8524C6
+      3525 0347 2164 7300 0194 5900
+      1199 5241 9472 8560 2196
+      Consulte o QR Code pelo aplicativo
+      De0lhoNaNota dịsponivel na AppStore
+      (Apple) e Playstore (Android)
+      #Valor aproximado dos tributos do item
+      Documento emitido por Linx Posto Fái!
+      www.linx.com.br/posto-faci!''';
 }

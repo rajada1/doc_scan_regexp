@@ -11,7 +11,7 @@ import 'package:doc_scan_regexp/src/cupom_fiscal/text/regognizer_date.dart';
 import '../test/scanned_string.dart';
 
 void main() {
-  for (var element in [ScannedString.iphoneVisionText2]) {
+  for (var element in [ScannedString.androidML2]) {
     extractValues(element);
   }
 }

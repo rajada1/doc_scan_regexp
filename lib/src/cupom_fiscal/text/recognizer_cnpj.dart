@@ -4,9 +4,11 @@ class RecognizerCnpj {
   static String? value(String text) {
     final correctText = _preprocessText(text);
     final match = cnpjRegExp.firstMatch(correctText);
-    return match
-        ?.group(0)
-        .formatOutCnpj; // Retorna o CNPJ encontrado ou null se não houver
+    final probableCnpj = match?.group(0).formatOutCnpj;
+    if (probableCnpj != null && isValidCNPJ(probableCnpj)) {
+      return probableCnpj;
+    }
+    return null;
   }
 
   static String _preprocessText(String text) {
@@ -19,6 +21,47 @@ class RecognizerCnpj {
       },
     );
   }
+
+  static bool isValidCNPJ(String cnpj) {
+    cnpj = cnpj.replaceAll(RegExp(r'\D'), '');
+
+    if (cnpj.length != 14) return false;
+    if (blackListCnpj.contains(cnpj)) return false;
+    if (RegExp(r'^(\d)\1+\$').hasMatch(cnpj)) return false;
+
+    List<int> weightsFirst = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    List<int> weightsSecond = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+
+    int calculateDigit(String number, List<int> weights) {
+      int sum = 0;
+      for (int i = 0; i < weights.length; i++) {
+        sum += int.parse(number[i]) * weights[i];
+      }
+      int remainder = sum % 11;
+      return remainder < 2 ? 0 : 11 - remainder;
+    }
+
+    int firstDigit = calculateDigit(cnpj.substring(0, 12), weightsFirst);
+    if (firstDigit != int.parse(cnpj[12])) return false;
+
+    int secondDigit = calculateDigit(cnpj.substring(0, 13), weightsSecond);
+    if (secondDigit != int.parse(cnpj[13])) return false;
+
+    return true;
+  }
+
+  static const List<String> blackListCnpj = [
+    "00000000000000",
+    "11111111111111",
+    "22222222222222",
+    "33333333333333",
+    "44444444444444",
+    "55555555555555",
+    "66666666666666",
+    "77777777777777",
+    "88888888888888",
+    "99999999999999"
+  ];
 }
 
 extension CnpjFormatter on String? {

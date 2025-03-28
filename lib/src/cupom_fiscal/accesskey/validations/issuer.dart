@@ -26,6 +26,7 @@ class Emitter {
   static bool isValidateCPF(String cpf) {
     // Remove caracteres não numéricos
     cpf = cpf.replaceAll(RegExp(r'\D'), '');
+    if (blackListCpf.contains(cpf)) return false;
 
     // Verifica se o CPF tem 11 dígitos
     if (cpf.length != 11) return false;
@@ -59,6 +60,7 @@ class Emitter {
     cnpj = cnpj.replaceAll(RegExp(r'\D'), '');
 
     if (cnpj.length != 14) return false;
+    if (blackListCnpj.contains(cnpj)) return false;
     if (RegExp(r'^(\d)\1+\$').hasMatch(cnpj)) return false;
 
     List<int> weightsFirst = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
@@ -81,6 +83,32 @@ class Emitter {
 
     return true;
   }
+
+  static const List<String> blackListCpf = [
+    "00000000000",
+    "11111111111",
+    "22222222222",
+    "33333333333",
+    "44444444444",
+    "55555555555",
+    "66666666666",
+    "77777777777",
+    "88888888888",
+    "99999999999",
+    "12345678909"
+  ];
+  static const List<String> blackListCnpj = [
+    "00000000000000",
+    "11111111111111",
+    "22222222222222",
+    "33333333333333",
+    "44444444444444",
+    "55555555555555",
+    "66666666666666",
+    "77777777777777",
+    "88888888888888",
+    "99999999999999"
+  ];
 }
 
 class Issuer {

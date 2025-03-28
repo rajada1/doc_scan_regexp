@@ -14,6 +14,7 @@ class CUf {
   static UFinfo extract(String value) {
     return available.firstWhere(
       (element) => element.code == int.parse(value.substring(0, 2)),
+      orElse: () => UFinfo(name: 'NotFound', code: 0, initials: ''),
     );
   }
 

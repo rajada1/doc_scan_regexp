@@ -33,6 +33,7 @@ class RecognizerDate {
 
   static String findDateNextFromSplit(String text, String splitText) {
     try {
+      print(splitText);
       String nText = text.toLowerCase().split(splitText).last;
       Iterable<Match> valores = fullDateRegExp.allMatches(nText);
       return valores.first.group(0) ?? '';
@@ -57,10 +58,18 @@ class RecognizerDate {
   static String findDateWithAccessKeyDate(
       String text, AccessKeyDate accessKeyDate) {
     final nText = text.toLowerCase().substring(5);
-    final dateWithMonthAndYear = RegExp(
-        '(\\d{1,2}[\\/-]${accessKeyDate.month}[\\/-](?:20${accessKeyDate.year}|${accessKeyDate.year}))');
+    final dateWithMonthAndYear = RegExp(r'(\d{2}[\/-]' +
+        accessKeyDate.month.padLeft(2, '0') +
+        r'[\/-](?:20' +
+        accessKeyDate.year +
+        r'|' +
+        accessKeyDate.year +
+        r'))');
     try {
       Iterable<Match> valores = dateWithMonthAndYear.allMatches(nText);
+      // for (var element in valores) {
+      //   print(element.group(0));
+      // }
       return valores.first.group(0) ?? '';
     } catch (e) {
       null;
@@ -76,6 +85,8 @@ class RecognizerDate {
     'data e hora de emissão',
     'data e hora',
     'data emissao',
+    'data de emissao',
+    'data de emissão',
     'data',
     'dala'
   ];

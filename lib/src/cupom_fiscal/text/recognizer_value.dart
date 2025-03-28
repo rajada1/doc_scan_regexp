@@ -7,24 +7,29 @@ class RecognizerValue {
 
   static String? makeFindValue(String text) {
     for (var element in keyWordsValue) {
-      if (text.toLowerCase().contains(element)) {
-        final result = findValueNextValueStringFromSplit(text, element);
+      if (text.toLowerCase().contains(element.toLowerCase())) {
+        final result =
+            findValueNextValueStringFromSplit(text, element.toLowerCase());
 
         if (result != '') {
           return result;
         }
       }
     }
-    return null;
+    final res1 = findValueAfterCurrencySymbol(text);
+    return res1;
   }
 
   static String findValueNextValueStringFromSplit(
       String text, String splitText) {
     try {
-      // print(splitText);
+      // print('VALUE SPLIT: $splitText');
       String nText = text.toLowerCase().split(splitText).last;
+
       Iterable<Match> valores = valorRegExp.allMatches(nText);
-      valores.first.group(0) ?? '';
+
+      // valores.first.group(0) ?? '';
+
       getDiscounts(text);
       return '${getMaxValue(valores, text)}';
     } catch (e) {
@@ -74,16 +79,33 @@ class RecognizerValue {
 
   static double? parseCurrency(String value) {
     try {
-      // Remove os separadores de milhares (pontos) e substitui a vírgula pelo ponto decimal
+      // Remove espaços em branco
+      value = value.removeWhiteSpace;
 
-      String normalizedValue = '';
-      if (value.contains(',') && value.contains('.')) {
-        normalizedValue =
-            value.replaceAll('.', '').replaceAll(',', '.').removeWhiteSpace;
-      } else {
-        normalizedValue = value.replaceAll(',', '.').removeWhiteSpace;
+      // Verifica se o valor corresponde ao padrão específico "1.000.00"
+      if (RegExp(r'^\d{1,3}(\.\d{3})*\.\d{2}$').hasMatch(value)) {
+        // Remove os separadores de milhares (pontos) e mantém o separador decimal (último ponto)
+        value = value.replaceAll('.', '');
+        value =
+            '${value.substring(0, value.length - 2)}.${value.substring(value.length - 2)}';
       }
-      return double.tryParse(normalizedValue);
+
+      // Verifica se o valor contém separadores de milhares e decimais
+      if (value.contains('.') && value.contains(',')) {
+        // Remove os pontos (separadores de milhares) e substitui a vírgula pelo ponto decimal
+        value = value.replaceAll('.', '').replaceAll(',', '.');
+      } else if (value.contains('.')) {
+        // Caso tenha apenas pontos, assume que o último é o separador decimal
+        final lastDotIndex = value.lastIndexOf('.');
+        value = value.replaceRange(lastDotIndex, lastDotIndex + 1, '#');
+        value = value.replaceAll('.', '').replaceAll('#', '.');
+      } else if (value.contains(',')) {
+        // Substitui a vírgula pelo ponto decimal
+        value = value.replaceAll(',', '.');
+      }
+
+      // Tenta converter o valor normalizado para double
+      return double.tryParse(value);
     } catch (e) {
       print('Erro ao converter valor: $value - $e');
       return null;
@@ -100,14 +122,37 @@ class RecognizerValue {
     // }
   }
 
+  static String? findValueAfterCurrencySymbol(String text) {
+    try {
+      // Define o RegExp para capturar "R$" seguido de um número
+      final regExp = RegExp(r'R\$\s?(\d{1,3}(?:[.,]\d{3})*[.,]?\d*)');
+
+      // Procura pelo primeiro valor correspondente
+      final match = regExp.firstMatch(text);
+
+      // Retorna o número encontrado ou null se não houver correspondência
+      final result = match
+          ?.group(1)
+          ?.replaceAll(',', '.'); // Substitui vírgula por ponto, se necessário
+
+      return double.tryParse(result ?? '').toString();
+    } catch (e) {
+      print('Erro ao capturar valor após R\$: $e');
+      return null;
+    }
+  }
+
   static RegExp discountValorRegExp =
       RegExp(r'(?<!\d)-\s?\d{1,3}(?:[.,]\d{3})*[.,]\d{2}(?!\d)');
   static RegExp valorRegExp =
       RegExp(r'(?<!\d)(?!0[.,]0{1,2})\d{1,3}(?:[.,]\d{3})*[.,]\s?\d{2}(?!\d)');
   static List<String> keyWordsValue = [
+    'VALOR TOTAL DA NOTA',
     'valor total',
-    r'TOTAL R$'.toLowerCase(),
+    r'TOTAL R$',
+    'credito',
     'valor',
+    r'R$',
     'total',
     'cartão',
     'valor pago',

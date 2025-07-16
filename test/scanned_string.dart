@@ -1723,7 +1723,7 @@ CRISTHIELLEN AUT 105518
 STOREX 1.1.0/15.49.00 LOJR: 0300
 ''';
 
-  static const androidML1 = r'''Linx
+  static const androidML31 = r'''Linx
       (NP 47216.47/1 4 IE 687278702113
       Eytrato 174201
       CAPN FISCAL İkONICO - SAT
@@ -1758,7 +1758,7 @@ STOREX 1.1.0/15.49.00 LOJR: 0300
       Documento emiticko por linx Pasto Fácil
       www.hnxcom.bulpasta-fad''';
 
-  static const androidML2 = r'''RUA ONZE DE : AGOSTO, 2570, Nao Informado,
+  static const androidML32 = r'''RUA ONZE DE : AGOSTO, 2570, Nao Informado,
       AUTO POSTO DE PAŬLA TATUI LTDA
       BAIRRO VALINHOŚ, , TATÚI, 18277-000
       CNPJ 47.216,473/0001- -94 IE 687278702113
@@ -1793,4 +1793,52 @@ STOREX 1.1.0/15.49.00 LOJR: 0300
       #Valor aproximado dos tributos do item
       Documento emitido por Linx Posto Fái!
       www.linx.com.br/posto-faci!''';
+
+  static const qrCodExampleOnline33 =
+      r'''http://www.sefazexemplo.gov.br/nfce/qrcode?p=28170800156225000131650110000151341562040824|2|1|1|DC6AE2C2B9A992BE59679AC365E29922DE6B7511''';
+  static const qrCodExampleOffline34 =
+      r'''http://www.sefazexemplo.gov.br/nfce/qrcode?p=28170800156225000131650110000151349562040824|2|1|02|60.90|797a4759685578312f5859597a6b7357422b6650523351633530633d|1|4615A93BB0D7C4E780F8D30EE77EDD5BA55C7D66''';
+  static const qrCodSatWithCpf35 =
+      r'''35250147216473000194590011995241742010327622|20250126120127|114.54|43593557851|pFxkAH1YwWr6F9ji7ZO7d8Bx+hpn9KLIOhRtpm4bRZsaIZucU+Vvh7Y9Imu8B23yiCxK1eCmLz9UIHF39cjlZoPdjyq1UgixH4iHofMoxN/BaT0tQlD0FJuO5XFAJO+GQBu2FZWBzJGBEJRnxS6nfIa+wsS5REdeY+IVav7qmKI7+V6Gx69u9hkzIbu+tUL+vP6lkaSurmOhF1qQTd8EhoQzyckNYJ0NgMW5cVcUkQse5i1X4ZS2FMleM0hn9H/vh2KE0c7oDLPPiCnA+/n2bcyn6bqDns7vIMjn7xOoQsjHkiUGCH6zblrhUwxIvHIN9EOwK2SRxBv2mcAA92KI3w==''';
+  static const qrCodSatWithoutCpf36 =
+      r'''35141146377222003730599000004630000853254753|20141105134843|637.00||H0iMysWjM9zOXjaxkpPjqk7Q0Fp4RFvWkC0jLngU8o/pg5WpjhiVU2i/7BnIDz/WU3bMd9Cg6qWHvyn11e+qE7VpUjfZFPiczrrxPOqke3kdaX3y2db0/xebRcLUn1+PO2fvKK/7tAPMUiXvb1YDH6DqHVBhoM5A7u3P5RZrHvl1dfaJumLbe5uejKmq4rDNdOI5EVReJ5q1O6asOzwd8O0JzUGIf9aSdcClKWY3Xqt+0IWGjX61Kb8bEobAe4wV69hPpCApoAwDzrjuB110aUa2Q2aR/X3GWgqs8GTNvwQVDYNexuo3Pk67uo/hUr8tLMb2K15SIqoCBfya6sUIvA==''';
+  static const qrCodNfceParana37 =
+      r'''http://www.fazenda.pr.gov.br/nfce/qrcode?p=41250415506860000179650010009870731374012111|2|1|1|D10311F2567688525224C95C0E2C4902B9186707''';
+
+  static const iphoneVisionText38 = r'''SHOPPING IGUATEMI CAMPINAS
+MCAF COMERCIO DE ALIMENTOS EIRELI
+AV IGUATEMI, 777
+LJ 8 PISO 3, VL BRANDINA CAMPINAS, SP CNPJ:00.004.330/0001-56 IE:244509816119 IM:ISENTO
+Extrato No.260730
+CUPOM FISCAL ELETRÔNICO - SAT
+CPF/CNPJ do Consumidor: 66.233.019/0005-01
+#| COD | DESC | QTD | UN | VL UN R$ | (VL TR R$) DESC | VL ITEM
+1 23424 PENNE MAMMA 1 UN X 31,40 (7,22)
+2 27893 INGREDIENTES MOLHO MAMMA 1 UN X 8,50
+(1,96)
+(1,84)
+Subtotal
+Descontos
+Acréscimos
+TOTAL R$
+3 0050130411100 COCA-COLA ZERO LATA 1 UN X 8,00
+CARTAO DEBITO
+31,40
+8,50
+8,00
+47,90
+- 0,00
+0,00
+47,90
+47,90
+X. CAIXA 1 OP: NILDO
+VND: 268688
+Valor aproximado dos tributos deste cupom R$ (conforme Lel Fed. 12.741/2012)
+*Valor aproximado dos tributos do Item
+Trib
+*: 4.31 Fed; 6,71 Eat; FONTE: IBPT
+SAT No.639293
+13/04/2026 - 16:03:19
+3625 0400 0043 3000 0155 5900 0639 2932 6073 0692 1799
+11,02''';
 }

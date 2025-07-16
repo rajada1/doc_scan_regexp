@@ -5,11 +5,11 @@ class RecognizerDate {
     if (accessKeyDate != null) {
       final result = findDateWithAccessKeyDate(text, accessKeyDate);
       if (result != '') {
-        return result.formatOutDate;
+        return result.formatOutDate(accessKeyDate);
       }
-      return makeFindDate(text).formatOutDate;
+      return makeFindDate(text).formatOutDate(accessKeyDate);
     } else {
-      return makeFindDate(text).formatOutDate;
+      return makeFindDate(text).formatOutDate(accessKeyDate);
     }
   }
 
@@ -93,12 +93,13 @@ class RecognizerDate {
 }
 
 extension ResultDate on String? {
-  String? get formatOutDate {
+  String? formatOutDate(AccessKeyDate? accessKeyDate) {
+    print('DATE IN FORMAT ${accessKeyDate.toString()}');
     String? newsFormat = this?.replaceAll('-', '/');
     final splitDate = newsFormat?.split('/');
     splitDate?.last.length == 2
         ? newsFormat =
-            '${splitDate?.first}/${splitDate?[1]}/20${splitDate?.last}'
+            '${splitDate?.first}/${(accessKeyDate?.month ?? splitDate?[1])}/20${(accessKeyDate?.year ?? splitDate?.last)}'
         : null;
     return newsFormat;
   }

@@ -1,7 +1,4 @@
 import 'package:doc_scan_regexp/src/cupom_fiscal/accesskey/accesskey.dart';
-import 'package:doc_scan_regexp/src/cupom_fiscal/accesskey/validations/aamm.dart';
-import 'package:doc_scan_regexp/src/cupom_fiscal/accesskey/validations/c_uf.dart';
-import 'package:doc_scan_regexp/src/cupom_fiscal/accesskey/validations/issuer.dart';
 import 'package:doc_scan_regexp/src/cupom_fiscal/accesskey/validations/mod.dart';
 import 'package:doc_scan_regexp/src/cupom_fiscal/text/recognizer_cnpj.dart';
 import 'package:doc_scan_regexp/src/cupom_fiscal/text/recognizer_document_type.dart';
@@ -16,20 +13,20 @@ void main() {
   group('AccessKey Extraction Tests', () {
     test('Extract and validate access key from iphoneVisionText1', () {
       final text = ScannedString.iphoneVisionText1;
-      final String value = Accesskey.extract(text);
-      expect(value, isNotEmpty, reason: 'Access key should not be empty');
-      expect(Accesskey.extract(value),
-          '35250157508426000763590004379042087486138245',
+      final AccessKeyInfo? value = Accesskey.extract(text);
+
+      expect(value, isNotNull, reason: 'Access key should not null');
+      expect(value?.accessKey, '35250157508426000763590004379042087486138245',
           reason: 'Access key should be valid');
-      expect(Aamm.extract(value).toString(), '01/25',
-          reason: 'AAMM should be 0125');
-      expect(CUf.value(value).code, 35, reason: 'CUF code should be 35');
-      expect(Emitter.value(value).document, '57508426000763',
+      expect(value?.date.toString(), '01/25', reason: 'AAMM should be 0125');
+      expect(value?.uf.code, 35, reason: 'CUF code should be 35');
+      expect(value?.cnpj, '57508426000763',
           reason: 'Issuer should be 57508426000763');
-      expect(Mod.extract(value).code, '59', reason: 'Mod code should be 59');
+      expect(Mod.extract(value!.accessKey).code, '59',
+          reason: 'Mod code should be 59');
       expect(RecognizerValue.value(text), '41.05',
           reason: 'Value should be 59');
-      expect(RecognizerDate.value(text, Aamm.extract(value)), '28/01/2025',
+      expect(RecognizerDate.value(text, value.date), '28/01/2025',
           reason: 'Date should be 28/01/2025');
     });
 
@@ -38,21 +35,21 @@ void main() {
 
       test('Extract and validate access key ID ${mock.mockId}', () {
         final text = mock.scannerString;
-        final String value = Accesskey.extract(text);
-        expect(value, isNotEmpty, reason: 'Access key should not be empty');
-        expect(Accesskey.extract(value), mock.accessKey,
+        final AccessKeyInfo? value = Accesskey.extract(text);
+        expect(value, isNotNull, reason: 'Access key should not be empty');
+        expect(value?.accessKey, mock.accessKey,
             reason: 'Access key should be valid');
-        expect(Aamm.extract(value).toString(), mock.aamm,
+        expect(value?.date.toString(), mock.aamm,
             reason: 'AAMM should be ${mock.aamm}');
-        expect(CUf.value(value).code, mock.cUf,
+        expect(value?.uf.code, mock.cUf,
             reason: 'CUF code should be ${mock.cUf}');
-        expect(Emitter.value(value).document, mock.emiiter,
+        expect(value?.cnpj, mock.emiiter,
             reason: 'Issuer should be ${mock.emiiter}');
-        expect(Mod.extract(value).code, '${mock.mod}',
+        expect(Mod.extract(value!.accessKey).code, '${mock.mod}',
             reason: 'Mod code should be ${mock.mod}');
         expect(RecognizerValue.value(text), mock.value,
             reason: 'Value should be ${mock.value}');
-        expect(RecognizerDate.value(text, Aamm.extract(value)), mock.date,
+        expect(RecognizerDate.value(text, value.date), mock.date,
             reason: 'Date should be ${mock.date}');
       });
     }
@@ -62,14 +59,14 @@ void main() {
 
       test('Extract and validate access key ID ${mock.mockId}', () {
         final text = mock.scannerString;
-        final String value = Accesskey.extract(text);
-        expect(Accesskey.extract(value), mock.accessKey,
+        final AccessKeyInfo? accessKeyInfo = Accesskey.extract(text);
+        expect(accessKeyInfo?.accessKey, mock.accessKey,
             reason: 'Access key should be valid');
         expect(RecognizerValue.value(text), mock.value,
             reason: 'Value should be ${mock.value}');
         expect(
-            RecognizerDate.value(
-                text, value != '' ? Aamm.extract(value) : null),
+            RecognizerDate.value(text,
+                accessKeyInfo?.accessKey != '' ? accessKeyInfo?.date : null),
             mock.date,
             reason: 'Date should be ${mock.date}');
       });

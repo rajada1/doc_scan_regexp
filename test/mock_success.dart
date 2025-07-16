@@ -42,7 +42,7 @@ class MockSuccess {
         mod: 65,
         aamm: '03/25',
         value: '130.57',
-        date: '12/03/2025')
+        date: '12/03/2025'),
   ];
 
   static List<MockSuccessSimples> listTestSimples = [
@@ -156,6 +156,13 @@ class MockSuccess {
         date: '12/02/2025',
         emiiter: '56344938000183',
         type: 'nfce'),
+    MockSuccessSimples(
+        mockId: 21,
+        scannerString: ScannedString.iphoneVisionText38,
+        accessKey: '35250400004330000155590006392932607306921799',
+        emiiter: '00004330000155',
+        value: '47.9',
+        date: '13/04/2025')
   ];
 }
 
